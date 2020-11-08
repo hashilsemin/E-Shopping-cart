@@ -35,6 +35,7 @@ router.get('/signup',(req,res)=>{
   res.render('user/signup')
 })
 router.post('/signup',(req,res)=>{
+  console.log(req.body)
   userHelpers.doSignup(req.body).then((response)=>{
     
     
@@ -47,8 +48,9 @@ router.post('/signup',(req,res)=>{
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
-    
+   
       req.session.user=response.user
+      console.log( req.session.user);
       req.session.user.loggedIn=true
       res.redirect('/')
     }else{
@@ -64,13 +66,18 @@ router.post('/login',(req,res)=>{
    res.redirect('/')
  } )
  router.get('/cart',verifyLogin,async(req,res)=>{
-   let products=await userHelpers.getCartProducts(req.session.user._id)
-   let totalValue=0
-   if(products.length>0){
-    totalValue=await userHelpers.getTotalAmount(req.session.user._id)
-   }
   
-   res.render('user/cart',{products,'user':req.session.user,totalValue})
+   let products=await userHelpers.getCartProducts(req.session.user._id)
+  let totalValue=0
+  if(products.length>0){
+    totalValue=await userHelpers.getTotalAmount(req.session.user._id)
+  }
+    
+  console.log(products);
+
+   let user=req.session.user._id
+   console.log(user);
+   res.render('user/cart',{products,user,totalValue})
  })
  router.get('/add-to-cart/:id',(req,res)=>{
   userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
@@ -140,4 +147,5 @@ router.post('/verify-payment',(req,res)=>{
   })
 
 })
+
 module.exports = router;
