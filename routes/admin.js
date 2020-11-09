@@ -6,10 +6,16 @@ const adminHelpers = require('../helpers/admin-helpers');
 const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
 var productHelper=require('../helpers/product-helpers')
-
+const verifyAdminLogin=(req,res,next)=>{
+  if(req.session.adminLoggedIn){
+    next()
+  }else{
+    res.redirect('/admin/adminLogin')
+  }
+}
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/',verifyAdminLogin, function(req, res, next) {
   productHelper.getAllProducts().then((products)=>{
     console.log(products);
     res.render('admin/view-products',{admin:true,products}  );
@@ -96,12 +102,12 @@ router.get('/adminLogin',(req,res)=>{
        
           req.session.admin=response.admin
           console.log( req.session.admin);
-          req.session.admin.loggedIn=true
+          req.session.adminLoggedIn=true
           res.redirect('/admin/')
         }else{
           req.session.adminLoginErr=true
           res.redirect('/admin/login')
-        }
+        } 
       })
      
       })
