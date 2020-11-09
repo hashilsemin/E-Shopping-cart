@@ -20,7 +20,9 @@
                  {{#if loginErr}}
             <p class="text-danger">Invalid username or password</p>
             {{/if}}
-            
+            {{#if count}}
+            <a href="/admin/register">Register admin?</a>
+            {{/if}}
                 <button type="submit" class="btn btn-primary float-right">Login</button>
             </form>
         </div>

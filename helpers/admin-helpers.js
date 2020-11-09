@@ -40,4 +40,21 @@ doLogin: (adminData) => {
         }
     })
 },
+ secondAdmin:()=>{
+    return new Promise(async(resolve,reject)=>{
+       
+     let number= await db.get().collection(collection.ADMIN_COLLECTION).count().then((number)=>{
+       if(number<=0){
+           let count=true
+           resolve(count)
+       }else{
+           let count=false
+           resolve(count)
+       }
+         
+    })
+    })
+   
+  }
+  
 }

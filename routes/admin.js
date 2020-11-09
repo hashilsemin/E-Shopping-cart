@@ -5,7 +5,8 @@ const { render } = require('../app');
 const adminHelpers = require('../helpers/admin-helpers');
 const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
-var productHelper=require('../helpers/product-helpers')
+var productHelper=require('../helpers/product-helpers');
+const { secondAdmin } = require('../helpers/admin-helpers');
 const verifyAdminLogin=(req,res,next)=>{
   if(req.session.adminLoggedIn){
     next()
@@ -69,8 +70,14 @@ router.post('/edit-product/:id',(req,res)=>{
      }
    })
 })
-router.get('/register',(req,res)=>{
-res.render('admin/register',{admin:true})
+router.get('/register',async(req,res)=>{
+  let count=await adminHelpers.secondAdmin()
+  if(count){
+    res.render('admin/register',{admin:true})
+  }else{
+    res.redirect('/admin/adminLogin')
+  }
+
 })
 router.post('/register',(req,res)=>{
 
@@ -78,7 +85,7 @@ router.post('/register',(req,res)=>{
   console.log(req.body)
   adminHelpers.registerAdmin(req.body).then((response)=>{
     req.session.admin=response
-    req.session.admin.loggedIn=true
+    req.session.adminLoggedIn=true
     res.redirect('/admin/')
    
   })
@@ -88,14 +95,18 @@ router.get('/logoutAdmin',(req,res)=>{
   req.session.adminLoggedIn=false
   res.redirect('/admin/adminLogin')
 } )
-router.get('/adminLogin',(req,res)=>{
+router.get('/adminLogin',async(req,res)=>{
+  
   if(req.session.admin){
     res.redirect('/admin/')
     }else{
-    res.render('admin/login',{'loginErr':req.session.adminLoginErr})
-     req.session.adminLoginErr=false
-  }
-    })
+     
+      let count=await adminHelpers.secondAdmin()
+       res.render('admin/login',{'loginErr':req.session.adminLoginErr,count})
+       req.session.adminLoginErr=false
+    
+    }
+  })
     router.post('/adminLogin',(req,res)=>{
       adminHelpers.doLogin(req.body).then((response)=>{
         if(response.status){
