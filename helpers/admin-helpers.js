@@ -112,7 +112,17 @@ OrderShipped:(Id)=>{
             resolve()
         })
     })
-}
+},
+getUsers:()=>{
+    return new Promise(async(resolve,reject)=>{
+      
+          let users= await db.get().collection(collection.USER_COLLECTION)
+          .find().toArray()
+          console.log(users);
+          resolve(users)
+     
+    })
+},
     
   
 }

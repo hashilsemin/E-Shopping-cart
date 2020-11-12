@@ -142,4 +142,9 @@ router.post('/order-shipped',async(req,res)=>{
 
  
 })
+router.get('/adminUsers',async(req,res)=>{
+  let users=await adminHelpers.getUsers()
+    res.render('admin/users',{users,admin:true})
+  
+})
 module.exports = router;
