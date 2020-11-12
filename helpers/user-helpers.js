@@ -324,6 +324,7 @@ verifyPayment:(details)=>{
     })
 },
 changePaymentStatus:(orderId)=>{
+    console.log(orderId);
     return new Promise((resolve,reject)=>{
         db.get().collection(collection.ORDER_COLLECTION).updateOne({_id:objectId(orderId)},
         {

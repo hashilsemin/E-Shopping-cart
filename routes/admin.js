@@ -18,7 +18,7 @@ const verifyAdminLogin=(req,res,next)=>{
 /* GET users listing. */
 router.get('/',verifyAdminLogin, function(req, res, next) {
   productHelper.getAllProducts().then((products)=>{
-    console.log(products);
+    
     res.render('admin/view-products',{admin:true,products}  );
   })
   
@@ -39,7 +39,7 @@ productHelpers.addProduct(req.body,(id)=>{
       res.render('admin/add-products')
     }
     else{
-      console.log(err);
+      console.log(err); 
     }
   }  )
   res.render("admin/add-products")
@@ -122,4 +122,24 @@ router.get('/adminLogin',async(req,res)=>{
       })
      
       })
+router.get('/adminOrders',async(req,res)=>{
+  let orders=await adminHelpers.getOrders()
+    res.render('admin/orders',{orders,admin:true})
+  
+})
+router.get('/view-order-products/:id',async(req,res)=>{
+  let products=await adminHelpers.getOrdersProducts(req.params.id)
+
+  res.render('admin/view-order-products',{admin:true,products})
+})
+router.post('/order-shipped',async(req,res)=>{
+  
+  console.log(req.body['id']);
+      adminHelpers.OrderShipped(req.body['id']).then(()=>{
+     
+        res.json({status:true})
+      })
+
+ 
+})
 module.exports = router;
