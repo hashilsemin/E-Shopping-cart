@@ -19,8 +19,12 @@
                 <label for="">Description</label>
                 <input type="text" name="Description" class="form-control" value="{{product.Description}}">
 
+                 <label for="">Specification</label>
+                
+                    <textarea  name="Specification" class="form-control" value="{{product.Specification}}"></textarea>
+                    <label for="">Youtube</label>
 
-                     
+                <input type="text" name="Video" class="form-control" value="{{product.Video}}">  
                 <label for="">Image</label>
                 <img src="/product-images/{{product._id}}.jpg" alt="" style="width:100px;height:auto" id="imgView">
                 <input type="file" name="Image" class="form-control"onchange="viewImage(event)" >

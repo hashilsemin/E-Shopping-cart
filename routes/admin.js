@@ -42,7 +42,7 @@ productHelpers.addProduct(req.body,(id)=>{
       console.log(err); 
     }
   }  )
-  res.render("admin/add-products")
+  res.render("admin/add-products",{admin:true})
 })
 
 })

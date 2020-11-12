@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const { response } = require('express')
 var objectId = require('mongodb').ObjectID
 const Razorpay=require('razorpay')
+const { resolve } = require('path')
 var instance = new Razorpay({
     key_id: 'rzp_test_4oASb9KdHLZimd',
     key_secret: 'T7RwDK53HjUjORrTnYkJcPSJ',
@@ -334,6 +335,12 @@ changePaymentStatus:(orderId)=>{
         }).then(()=>{
             resolve()
         })
+    })
+},
+getDetails:(productId)=>{
+    return new Promise(async(resolve,reject)=>{
+       let details=await db.get().collection(collection.PRODUCT_COLLECTIONS).findOne({_id:objectId(productId) })
+        resolve(details)
     })
 }
     

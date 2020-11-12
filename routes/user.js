@@ -147,5 +147,11 @@ router.post('/verify-payment',(req,res)=>{
   })
 
 })
+router.get('/moreDetails/:id',async(req,res)=>{
+  let details=await userHelpers.getDetails(req.params.id)
+console.log(details);
+    res.render('user/moreDetails',{details,user:req.session.user}) 
+
+})
 
 module.exports = router;

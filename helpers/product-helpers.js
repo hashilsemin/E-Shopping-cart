@@ -44,8 +44,9 @@ module.exports={
                     Name:proDetails.Name,
                     Description:proDetails.Description,
                     Price:proDetails.Price,
-                    category:proDetails.category
-
+                    category:proDetails.category,
+                    Specification:proDetails.Specification,
+                    Video:proDetails.Video
                 }
             }).then((response)=>{
                 resolve()
