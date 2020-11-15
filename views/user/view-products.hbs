@@ -1,105 +1,162 @@
 <style>
-.zoom {
+    .zoom {
 
-  transition: transform .2s; /* Animation */
+        transition: transform .2s;
+        /* Animation */
 
-}
+    }
 
-.zoom:hover {
-  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
+    .zoom:hover {
+        transform: scale(1.1);
+        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
 </style>
+
 {{#if smartPhone}}
 
-<section id="Smartphone" >
+<section id="Smartphone">
     <h3 style="padding-top: 3em; text-align: center;">Smart phones</h3>
+    <input style="width: 20%;margin-left: 5em;" type="text" id="myFilter" class="form-control" onkeyup="myFunction()"
+        placeholder="Search Smart phone..">
 
     <div class="container mt-5">
-        <div class="row">
-            <div class="card-deck">
-                {{#each smartPhone}}
+        <div class="row " id="myItems">
 
-                <div class="col-md-3 p-3 zoom">
-                    <div class="card border-success" style="width: 15rem; height: 28rem">
-                        <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto "
-                            style="width: 6rem; height: 9rem" alt="...">
-                        <div class="card-body">
-                            <hr>
-                            <h5 class="card-title">{{this.Name}}</h5>
-                            <p class="card-text">{{this.Description}}</p>
-                            <p class="card-text">{{this.Price}} Rs</p>
-                            <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
-                            <a href="/moreDetails/{{this._id}}" class="btn btn-secondary mt-2">More details</a>
+            {{#each smartPhone}}
 
-                        </div>
+            <div class="col-md-3 p-3 zoom">
+                <div class="card border-success" style="width: 15rem; height: 28rem">
+                    <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto "
+                        style="width: 6rem; height: 9rem" alt="...">
+                    <div class="card-body">
+                        <hr>
+                        <h5 class="card-title">{{this.Name}}</h5>
+                        <p class="card-text">{{this.Description}}</p>
+                        <p class="card-text">{{this.Price}} Rs</p>
+                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
+                        <a href="/moreDetails/{{this._id}}" class="btn btn-secondary mt-2">More details</a>
+
                     </div>
                 </div>
-                {{/each}}
             </div>
+            {{/each}}
+
         </div>
     </div>
 
-</section><hr>
+</section>
+<hr>
 {{/if}}
 {{#if laptop}}
 <h3 style="margin-top: 40px; text-align: center;">Laptop</h3>
 <section id="laptop">
-
+    <input style="width: 20%;margin-left: 5em;" type="text" id="myFilter1" class="form-control" onkeyup="myFunction1()"
+        placeholder="Search Smart phone..">
     <div class="container mt-5">
-        <div class="row">
-            <div class="card-deck ">
-                {{#each laptop}}
+        <div class="row" id="myItems1">
 
-                <div class="col-md-6 p-3 zoom">
-                    <div class="card border-success" style="width: 15rem; height: 28rem">
-                        <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
-                            style="width: 6rem; height: 9rem" alt="...">
-                        <div class="card-body">
-                            <hr>
-                            <h5 class="card-title">{{this.Name}}</h5>
-                            <p class="card-text">{{this.Description}}</p>
-                            <p class="card-text">{{this.Price}} Rs</p>
-                            <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
-                            <a href="/moreDetails/{{this._id}}" class="btn btn-secondary mt-2">More details</a>
+            {{#each laptop}}
 
-                        </div>
+            <div class="col-md-3 p-3 zoom">
+                <div class="card border-success" style="width: 15rem; height: 28rem">
+                    <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
+                        style="width: 6rem; height: 9rem" alt="...">
+                    <div class="card-body">
+                        <hr>
+                        <h5 class="card-title">{{this.Name}}</h5>
+                        <p class="card-text">{{this.Description}}</p>
+                        <p class="card-text">{{this.Price}} Rs</p>
+                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
+                        <a href="/moreDetails/{{this._id}}" class="btn btn-secondary mt-2">More details</a>
+
                     </div>
                 </div>
-                {{/each}}
             </div>
+            {{/each}}
+
         </div>
     </div>
 
-</section><hr>
+</section>
+<hr>
 {{/if}}
 {{#if Hearphone}}
 <h3 style="margin-top: 40px; text-align: center;">Hearphone</h3>
 <section id="Hearphone">
-
+    <input style="width: 20%;margin-left: 5em;" type="text" id="myFilter2" class="form-control" onkeyup="myFunction2()"
+        placeholder="Search Smart phone..">
     <div class="container mt-5">
-        <div class="row">
-            <div class="card-deck ">
-                {{#each Hearphone}}
+        <div class="row" id="myItems2">
 
-                <div class="col-md-6 p-3 zoom">
-                    <div class="card border-success" style="width: 15rem; height: 28rem">
-                        <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
-                            style="width: 6rem; height: 9rem" alt="...">
-                        <div class="card-body">
-                            <hr>
-                            <h5 class="card-title">{{this.Name}}</h5>
-                            <p class="card-text">{{this.Description}}</p>
-                            <p class="card-text">{{this.Price}} Rs</p>
-                            <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
-                            <a href="/moreDetails/{{this._id}}" class="btn btn-secondary mt-2">More details</a>
+            {{#each Hearphone}}
 
-                        </div>
+            <div class="col-md-3 p-3 zoom">
+                <div class="card border-success" style="width: 15rem; height: 28rem">
+                    <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
+                        style="width: 6rem; height: 9rem" alt="...">
+                    <div class="card-body">
+                        <hr>
+                        <h5 class="card-title">{{this.Name}}</h5>
+                        <p class="card-text">{{this.Description}}</p>
+                        <p class="card-text">{{this.Price}} Rs</p>
+                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
+                        <a href="/moreDetails/{{this._id}}" class="btn btn-secondary mt-2">More details</a>
+
                     </div>
                 </div>
-                {{/each}}
             </div>
+            {{/each}}
+
         </div>
     </div>
 
-</section><hr>
+</section>
+<hr>
 {{/if}}
+<script>
+    function myFunction() {
+        var input, filter, cards, cardContainer, h5, title, i;
+        input = document.getElementById("myFilter");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("myItems");
+        cards = cardContainer.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector(".card-body h5.card-title");
+            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+     function myFunction1() {
+        var input, filter, cards, cardContainer, h5, title, i;
+        input = document.getElementById("myFilter1");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("myItems1");
+        cards = cardContainer.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector(".card-body h5.card-title");
+            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+     function myFunction2() {
+        var input, filter, cards, cardContainer, h5, title, i;
+        input = document.getElementById("myFilter2");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("myItems2");
+        cards = cardContainer.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector(".card-body h5.card-title");
+            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
