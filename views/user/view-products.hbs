@@ -1,3 +1,14 @@
+<style>
+.zoom {
+
+  transition: transform .2s; /* Animation */
+
+}
+
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+</style>
 {{#if smartPhone}}
 
 <section id="Smartphone" >
@@ -8,9 +19,9 @@
             <div class="card-deck">
                 {{#each smartPhone}}
 
-                <div class="col-md-3 p-3">
+                <div class="col-md-3 p-3 zoom">
                     <div class="card border-success" style="width: 15rem; height: 28rem">
-                        <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
+                        <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto "
                             style="width: 6rem; height: 9rem" alt="...">
                         <div class="card-body">
                             <hr>
@@ -39,7 +50,7 @@
             <div class="card-deck ">
                 {{#each laptop}}
 
-                <div class="col-md-6 p-3">
+                <div class="col-md-6 p-3 zoom">
                     <div class="card border-success" style="width: 15rem; height: 28rem">
                         <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
                             style="width: 6rem; height: 9rem" alt="...">
@@ -70,7 +81,7 @@
             <div class="card-deck ">
                 {{#each Hearphone}}
 
-                <div class="col-md-6 p-3">
+                <div class="col-md-6 p-3 zoom">
                     <div class="card border-success" style="width: 15rem; height: 28rem">
                         <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
                             style="width: 6rem; height: 9rem" alt="...">
