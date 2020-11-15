@@ -54,5 +54,26 @@ module.exports={
 
         })
     },
+    getSmartphone:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let smartPhone=await db.get().collection(collection.PRODUCT_COLLECTIONS).find({category:'Smart phone'}).toArray()
+            console.log(smartPhone);
+            resolve(smartPhone)
+        })
+    },
+    getLaptop :()=>{
+        return new Promise(async(resolve,reject)=>{
+            let laptop=await db.get().collection(collection.PRODUCT_COLLECTIONS).find({category:'Laptop'}).toArray()
+         
+            resolve(laptop)
+        })
+    },
+    getHearphone :()=>{
+        return new Promise(async(resolve,reject)=>{
+            let Hearphone=await db.get().collection(collection.PRODUCT_COLLECTIONS).find({category:'Hearphone'}).toArray()
+         
+            resolve(Hearphone)
+        })
+    },
 
 }

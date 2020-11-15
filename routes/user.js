@@ -18,9 +18,12 @@ router.get('/',async function(req, res,next) {
   if(req.session.user){
    cartCount= await userHelpers.getCartCount(req.session.user._id)
   }
+  let smartPhone= await productHelper.getSmartphone()
+  let laptop= await productHelper.getLaptop()
+  let Hearphone= await productHelper.getHearphone()
   productHelper.getAllProducts().then((products)=>{
     console.log(cartCount);
-    res.render('user/view-products',{products,user,cartCount}  );
+    res.render('user/view-products',{laptop,Hearphone,products,user,cartCount,smartPhone}  );
   })
 });
 router.get('/login',(req,res)=>{
