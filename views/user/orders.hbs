@@ -30,6 +30,7 @@
       <td>{{this.status}}</td>
     
      <td><a href="/view-order-products/{{this._id}}" class="btn btn-primary">View products</a></td>
+      <td> <button class="btn btn-danger" onclick="cancelItem('{{this._id}}')">Cancel order</button></td>
      
     </tr>
   {{/each}}
@@ -37,3 +38,24 @@
 </table>
     </div> </div>
 </section>
+<script>
+    function cancelItem(id){
+       $.ajax({
+            url:'/order-cancel',
+            data:{
+                id:id
+               
+            },
+            method:'post',
+            success:(response)=>{
+              if(response.status){
+             
+                 location.reload()
+              }else{
+                alert('error')
+              }
+               
+            } 
+       })
+    }
+</script>

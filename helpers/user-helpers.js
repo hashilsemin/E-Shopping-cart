@@ -222,6 +222,7 @@ module.exports = {
 placeOrder:(order,products,total)=>{
 return new Promise(async(resolve,reject)=>{
 console.log(order,products,total)
+
 let status=order['payment-method']==='COD'?'placed':'pending'
 let orderObj={
     deliveryDetails:{
@@ -254,6 +255,7 @@ getOrders:(userId)=>{
     return new Promise(async(resolve,reject)=>{
         let orders= await db.get().collection(collection.ORDER_COLLECTION)
         .find({userId:objectId(userId)}).toArray()
+        
         resolve(orders)
     })
 },
@@ -342,7 +344,19 @@ getDetails:(productId)=>{
        let details=await db.get().collection(collection.PRODUCT_COLLECTIONS).findOne({_id:objectId(productId) })
         resolve(details)
     })
-}
+},
+OrderCancel:(Id)=>{
+    return new Promise((resolve,reject)=>{
+        db.get().collection(collection.ORDER_COLLECTION).updateOne({_id:objectId(Id)},
+        {
+            $set:{
+                status:'Cancelled'
+            }
+        }).then(()=>{
+            resolve()
+        })
+    })
+},
     
 }
         

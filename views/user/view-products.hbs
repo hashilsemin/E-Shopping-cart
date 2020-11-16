@@ -16,7 +16,7 @@
 
 <section id="Smartphone">
     <h3 style="padding-top: 3em; text-align: center;">Smart phones</h3>
-    <input style="width: 20%;margin-left: 5em;" type="text" id="myFilter" class="form-control" onkeyup="myFunction()"
+    <input style="width: 20%;margin-left: 5em; border: 2px solid green;border-radius: 4px;" type="text" id="myFilter" class="form-control" onkeyup="myFunction()"
         placeholder="Search Smart phone..">
 
     <div class="container mt-5">
@@ -25,9 +25,9 @@
             {{#each smartPhone}}
 
             <div class="col-md-3 p-3 zoom">
-                <div class="card border-success" style="width: 15rem; height: 28rem">
+                <div class="card border-success" style="width: 15rem; height: 25rem">
                     <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto "
-                        style="width: 6rem; height: 9rem" alt="...">
+                        style="width: 3rem; height: 6rem" alt="...">
                     <div class="card-body">
                         <hr>
                         <h5 class="card-title">{{this.Name}}</h5>
@@ -50,17 +50,17 @@
 {{#if laptop}}
 <h3 style="margin-top: 40px; text-align: center;">Laptop</h3>
 <section id="laptop">
-    <input style="width: 20%;margin-left: 5em;" type="text" id="myFilter1" class="form-control" onkeyup="myFunction1()"
-        placeholder="Search Smart phone..">
+    <input style="width: 20%;margin-left: 5em; border: 2px solid green;border-radius: 4px;" type="text" id="myFilter1" class="form-control" onkeyup="myFunction1()"
+        placeholder="Search Laptop..">
     <div class="container mt-5">
         <div class="row" id="myItems1">
 
             {{#each laptop}}
 
             <div class="col-md-3 p-3 zoom">
-                <div class="card border-success" style="width: 15rem; height: 28rem">
+                <div class="card border-success" style="width: 15rem; height: 25rem">
                     <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
-                        style="width: 6rem; height: 9rem" alt="...">
+                        style="width: 3rem; height: 6rem" alt="...">
                     <div class="card-body">
                         <hr>
                         <h5 class="card-title">{{this.Name}}</h5>
@@ -83,17 +83,17 @@
 {{#if Hearphone}}
 <h3 style="margin-top: 40px; text-align: center;">Hearphone</h3>
 <section id="Hearphone">
-    <input style="width: 20%;margin-left: 5em;" type="text" id="myFilter2" class="form-control" onkeyup="myFunction2()"
-        placeholder="Search Smart phone..">
+    <input style="width: 20%;margin-left: 5em; border: 2px solid green;border-radius: 4px;" type="text" id="myFilter2" class="form-control" onkeyup="myFunction2()"
+        placeholder="Search Hearphone..">
     <div class="container mt-5">
         <div class="row" id="myItems2">
 
             {{#each Hearphone}}
 
             <div class="col-md-3 p-3 zoom">
-                <div class="card border-success" style="width: 15rem; height: 28rem">
+                <div class="card border-success" style="width: 15rem; height: 25rem">
                     <img src="/product-images/{{this._id}}.jpg" class="card-img-top mx-auto"
-                        style="width: 6rem; height: 9rem" alt="...">
+                       style="width: 3rem; height: 6rem" alt="...">
                     <div class="card-body">
                         <hr>
                         <h5 class="card-title">{{this.Name}}</h5>

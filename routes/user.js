@@ -23,7 +23,7 @@ router.get('/',async function(req, res,next) {
   let Hearphone= await productHelper.getHearphone()
   productHelper.getAllProducts().then((products)=>{
     console.log(cartCount);
-    res.render('user/view-products',{laptop,Hearphone,products,user,cartCount,smartPhone}  );
+    res.render('user/view-products',{laptop,Hearphone,products,user,cartCount,smartPhone,home:true}  );
   })
 });
 router.get('/login',(req,res)=>{
@@ -111,6 +111,7 @@ router.post('/login',(req,res)=>{
   let products=await userHelpers.getCartProductList(req.body.userId)
   let totalPrice=await userHelpers.getTotalAmount(req.body.userId) 
   userHelpers.placeOrder(req.body,products,totalPrice).then((orderId)=>{
+  
     if(req.body['payment-method']==='COD'){
       res.json({codSuccess:true})
     }else{
@@ -155,6 +156,16 @@ router.get('/moreDetails/:id',async(req,res)=>{
 console.log(details);
     res.render('user/moreDetails',{details,user:req.session.user}) 
 
+})
+router.post('/order-cancel',async(req,res)=>{
+  
+  console.log(req.body['id']);
+      userHelpers.OrderCancel(req.body['id']).then(()=>{
+     
+        res.json({status:true})
+      })
+
+ 
 })
 
 module.exports = router;
